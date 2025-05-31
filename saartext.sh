@@ -16,6 +16,7 @@ main() {
 
         # Benutzereingabe abfragen
         read -p "Neue Seite eingeben (oder 'q' zum Beenden): " input
+        echo
 
         # Überprüfe die Eingabe
         if [[ "$input" == "q" || "$input" == "Q" ]]; then
@@ -24,7 +25,7 @@ main() {
         elif [[ "$input" =~ ^[0-9]+$ ]]; then
             page="$input"
         else
-            echo "Ungültige Eingabe. Bitte eine Zahl eingeben oder 'q' zum Beenden."
+            page=110 
         fi
     done
 }
