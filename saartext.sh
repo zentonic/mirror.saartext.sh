@@ -1,11 +1,14 @@
 #!/bin/bash
 
+space1="                   " 
+space2="                                    "
+
 process() {
   curl -s "https://www.saartext.de/$page" | \
     sed -n '/<pre/,/<\/pre>/p' | \
-    sed s/"                    <pre class=\"saartext_page\">"/"<pre>"/ | \
+    sed s/$space1\<pre class=\"saartext_page\"\>/\<pre\>/ | \
     sed s/"<\/pre>"// | \
-    sed s/"                                    "// | \
+    sed s/$space2// | \
     pandoc --from html --to markdown_strict
 }
 
