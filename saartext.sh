@@ -20,8 +20,8 @@ process() {
 EOF
   else
     curl -s "https://www.saartext.de/$page" |
-      sed -e s/"saartext_page\">"/"\\n<SAARTEXT_START>"/ \
-        -e s/"<\/pre>"/"<SAARTEXT_END>"/ |
+      sed -e s/"saartext_page\">"/"\\n<SAARTEXT_START>"/ |
+      sed -e s/"<\/pre>"/"<SAARTEXT_END>"/ |
       sed -nr '/SAARTEXT_START/,/SAARTEXT_END/p' |
       sed -e 's/<[^>]*>//g' |
       uniq
@@ -34,7 +34,7 @@ main() {
     process "$page" && [ -n "$1" ] && exit 0
 
     # Benutzereingabe abfragen
-    read -p "[Q]uit hel[P] [b]$(($page - 1)) [n]$(($page + 1)) $page Page " input
+    read -pr "[Q]uit hel[P] [b]$((page - 1)) [n]$((page + 1)) $page Page " input
     echo
 
     # Überprüfe die Eingabe
