@@ -1,3 +1,5 @@
+License: This Project from holm / Christian Müller (<https://mueller.network>) is cc-by-sa-4.0
+
 # saartext.sh
 
 Lade Seiten von saartext.de und gibt sie auf der konsole aus.

@@ -4,12 +4,30 @@ space1="                   "
 space2="                                    "
 
 process() {
-  curl -s "https://www.saartext.de/$page" |
-    sed -n '/<pre/,/<\/pre>/p' |
-    sed s/"$space1\<pre class=\"saartext_page\"\>"/\<pre\>/ |
-    sed s/"<\/pre>"// |
-    sed s/"$space2"// |
-    pandoc --from html --to markdown_strict
+  if [[ "$page" == "help" ]]; then
+    cat <<EOF
+
+      saartext.sh
+
+      TUI Browser für saartext.de
+      
+      ?,p       Hilfe
+      q         Beenden
+      [RETURN]  Startseite News 110
+      
+      Navigation:
+      b,h,a     Eine Seite zurück
+      n,l,d     Eine Seite vor
+
+EOF
+  else
+    curl -s "https://www.saartext.de/$page" |
+      sed -n '/<pre/,/<\/pre>/p' |
+      sed s/"$space1\<pre class=\"saartext_page\"\>"/\<pre\>/ |
+      sed s/"<\/pre>"// |
+      sed s/"$space2"// |
+      pandoc --from html --to markdown_strict
+  fi
 }
 
 main() {
@@ -18,34 +36,31 @@ main() {
     process "$page"
 
     # Benutzereingabe abfragen
-    read -p "Neue Seite eingeben (oder 'q' zum Beenden): " input
+    read -p "[Q]uit hel[P]                     Seite: " input
     echo
 
     # Überprüfe die Eingabe
-    if [[ "$input" == "q" || "$input" == "Q" ]]; then
-      echo "Programm wird beendet."
-      break
-    elif [[ 
-      "$input" == "n" ||
-      "$input" == "N" ||
-      "$input" == "l" ||
-      "$input" == "L" ||
-      "$input" == "d" ||
-      "$input" == "D" ]]; then
+    case "$input" in
+    q | Q) # Quit
+      exit
+      ;;
+    p | P | "?") # Help
+      page="help"
+      ;;
+    n | N | l | L | d | D) # Next
       page=$(($page + 1))
-    elif [[ 
-      "$input" == "b" ||
-      "$input" == "B" ||
-      "$input" == "h" ||
-      "$input" == "H" ||
-      "$input" == "a" ||
-      "$input" == "A" ]]; then
+      ;;
+    b | B | h | H | a | A) # Back
       page=$(($page - 1))
-    elif [[ "$input" =~ ^[0-9]+$ ]]; then
-      page="$input"
-    else
-      page=110
-    fi
+      ;;
+    *)
+      if [[ "$input" =~ ^[0-9]+$ ]]; then
+        page="$input"
+      else
+        page=110
+      fi
+      ;;
+    esac
   done
 }
 
