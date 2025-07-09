@@ -34,7 +34,7 @@ main() {
     process "$page" && [ -n "$1" ] && exit 0
 
     # Benutzereingabe abfragen
-    read -pr "[Q]uit hel[P] [b]$((page - 1)) [n]$((page + 1)) $page Page " input
+    read -p "[Q]uit hel[P] [b]$((page - 1)) [n]$((page + 1)) $page Page " input
     echo
 
     # Überprüfe die Eingabe
