@@ -34,7 +34,7 @@ main() {
     process "$page"
 
     # Benutzereingabe abfragen
-    read -p "[Q]uit hel[P]                     Seite: " input
+    read -p "[Q]uit hel[P]                 Seite: " input
     echo
 
     # Überprüfe die Eingabe
