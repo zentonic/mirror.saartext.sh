@@ -1,6 +1,7 @@
 #!/bin/bash
 
 process() {
+  clear
   if [[ "$page" == "help" ]]; then
     cat <<EOF
 
