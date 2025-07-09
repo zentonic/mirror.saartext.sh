@@ -1,8 +1,5 @@
 #!/bin/bash
 
-space1="                   "
-space2="                                    "
-
 process() {
   if [[ "$page" == "help" ]]; then
     cat <<EOF
@@ -22,11 +19,11 @@ process() {
 EOF
   else
     curl -s "https://www.saartext.de/$page" |
-      sed -n '/<pre/,/<\/pre>/p' |
-      sed s/"$space1\<pre class=\"saartext_page\"\>"/\<pre\>/ |
-      sed s/"<\/pre>"// |
-      sed s/"$space2"// |
-      pandoc --from html --to markdown_strict
+      sed s/"saartext_page\">"/\\nSAARTEXT_START\\n/ |
+      sed s/"<\/pre>"/SAARTEXT_END\\n/ |
+      sed -nr '/SAARTEXT_START/,/SAARTEXT_END/p' |
+      sed -e 's/<[^>]*>//g' |
+      grep -v "SAARTEXT_START\|SAARTEXT_END"
   fi
 }
 
