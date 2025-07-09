@@ -14,8 +14,8 @@ process() {
       [RETURN]  Startseite News 110
       
       Navigation:
-      b,h,a     + Eine Seite zurück
-      n,l,d     - Eine Seite vor
+      b,h,a     - Eine Seite zurück
+      n,l,d     + Eine Seite vor
 
 EOF
   else
