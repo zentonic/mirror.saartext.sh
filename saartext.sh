@@ -59,16 +59,16 @@ main() {
 
     # Überprüfe die Eingabe
     case "$input" in
-    q | Q) # Quit
+    "q" | "qqq" | "Q" | "QQQ") # Quit
       exit
       ;;
-    p | P | "?") # Help
+    "p" | "ppp" | "P" | "PPP" | "?" | "???") # Help
       page="help"
       ;;
-    n | N | l | L | d | D) # Next
+    "n" | "nnn" | "N" | "l" | "L" | "d" | "D") # Next
       page=$(($page + 1))
       ;;
-    b | B | h | H | a | A) # Back
+    "b" | "bbb" | "B" | "h" | "H" | "a" | "A") # Back
       page=$(($page - 1))
       ;;
     *)
