@@ -21,11 +21,11 @@ h   l   a   d    b   n
 
 ## Screenshots
 
-![Startseite Nachrichten](assets/Startseite_Nachrichten.png)
+![Hilfe](assets/Hilfe.png)
 ---
 
 ![Seite](assets/Nachricht.png)
 
 ---
 
-![Hilfe](assets/Hilfe.png)
+![Startseite Nachrichten](assets/Startseite_Nachrichten.png)
