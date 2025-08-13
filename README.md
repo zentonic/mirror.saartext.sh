@@ -4,6 +4,8 @@ License: This Project from holm / Christian Müller (<https://mueller.network>) 
 
 **TUI Browser für [saartext.de](saartext.de) in BASH**
 
+![Termux View](assets/Termux.png)
+
 ## Requirements
 
 * BASH
@@ -18,10 +20,6 @@ h   l   a   d    b   n
 ~~~
 
 ## Screenshots
-
-![Termux View](assets/Termux.png)
-
----
 
 ![Startseite Nachrichten](assets/Startseite_Nachrichten.png)
 ---
