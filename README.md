@@ -2,13 +2,32 @@ License: This Project from holm / Christian Müller (<https://mueller.network>) 
 
 # saartext.sh
 
-Lade Seiten von saartext.de und gibt sie auf der konsole aus.
+**TUI Browser für [saartext.de](saartext.de) in BASH**
 
-GitHub Mirror: [mirror.saartext.sh](https://github.com/zentonic/mirror.saartext.sh)
-Steuerung per
+## Requirements
+
+* BASH
+* curl
+
+## Steuerung
 
 ~~~
-  k      w
-h   l   a d    b  n
-  j      s
+  k       w
+h   l   a   d    b   n
+  j       s
 ~~~
+
+## Screenshots
+
+![Termux View](assets/Termux.png)
+
+---
+
+![Startseite Nachrichten](assets/Startseite_Nachrichten.png)
+---
+
+![Seite](assets/Nachricht.png)
+
+---
+
+![Hilfe](assets/Hilfe.png)
