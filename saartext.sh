@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# ==============================================================================
+# Skriptname: saartext.sh
+# Beschreibung: TUI Browser für saartext.de in BASH
+# Autor: holm / Christian Müller - https://mueller.network
+# Repo: https://forgejo.mueller.network/Zentonic/saartext.sh.git
+# Lizenz: MIT-Lizenz (siehe Datei LICENSE)
+#
+# Copyright (c) 2025 holm / Christian Müller - https://mueller.network
+# ==============================================================================
+
 process() {
   clear
   if [[ "$page" == "help" ]]; then
