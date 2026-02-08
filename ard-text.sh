@@ -17,7 +17,7 @@ process() {
       Navigation:
       h b a -   Eine Seite zurück
       j s       Eine Unterseite runter
-      k S       Eine Unterseite hoch
+      k w       Eine Unterseite hoch
       l n d +   Eine Seite vor
 
 EOF
