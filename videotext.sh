@@ -31,9 +31,7 @@ process() {
 EOF
     echo -en "${R}"
   else
-    echo -en "${C4}"
     bash $content_url $page $subpage
-    echo -en "${R}"
   fi
 }
 
@@ -51,6 +49,13 @@ main() {
   command=$(basename "$0")
   if [[ $1 ]]; then
     command=$1
+  fi
+
+  if [[ $command == "--help" ]]; then
+    echo "Aufruf: videotext [PROVIDER] [PAGE] [SUBPAGE]"
+    echo "        videotext --list    Provider auflisten"
+    echo "        videotext --help    Diese Hilfe"
+    exit 0
   fi
 
   while IFS= read -r line; do
@@ -74,6 +79,10 @@ main() {
     fi
   done <$SCRIPT_DIR/Videotext_Providers.conf
 
+  if [[ $command == "videotext" || $command == "--list" ]]; then
+    exit 0
+  fi
+
   if [ -z "$config" ]; then
     echo "Provider nicht gefunden."
     echo "Liste mit --list"
@@ -83,12 +92,9 @@ main() {
 
   provider=${config%" "*}
   startpage=${config##*" "}
-  echo provider $provider
-  echo startpage $startpage
 
   page="${2:-$startpage}"
   subpage="${3:-""}"
-  echo page $page
 
   content_url=$SCRIPT_DIR/includes/$provider/get_content.sh
 
@@ -124,7 +130,7 @@ main() {
       page=$(($page + 1))
       subpage=1
       ;;
-    "b" | "bbb" | "nnn" | "B" | "h" | "H" | "a" | "A") # Back
+    "b" | "bbb" | "B" | "h" | "H" | "a" | "A" | "-") # Back
       page=$(($page - 1))
       subpage=1
       ;;

@@ -5,7 +5,7 @@ Dieses Projekt steht unter der **MIT-Lizenz** – siehe [LICENSE](LICENSE) für 
 © 2025 [Christian Müller](https://mueller.network)
 
 
-# saartext.sh
+# videotext.sh
 
 **TUI Browser für [saartext.de](saartext.de) in BASH**
 
