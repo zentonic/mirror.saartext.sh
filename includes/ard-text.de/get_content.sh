@@ -3,7 +3,7 @@
 page=$1
 subpage=$2
 
-curl -s "https://www.ard-text.de/index.php?page=$page\&subpage=$subpage" |
+curl -s "https://www.ard-text.de/index.php?page=$page\&sub=$subpage" |
   sed -e s/"<div id='page_"/"\\n<ARDTEXT_START><div id='page_"/ |
   sed -e s/"ctc_test\">"/"<ARDTEXT_END>"/ |
   sed -nr '/ARDTEXT_START/,/ARDTEXT_END/p' |
